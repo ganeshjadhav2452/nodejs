@@ -1,10 +1,14 @@
-// crating new file using command input
+const express = require('express')
+const app = express()
 
-const apiData = require('./api.json')
-const http = require('http')
+app.get('/',(req,res)=>{
+    res.send('hello, this is home page')
 
-http.createServer((req,res)=>{
-    res.writeHead(200,{'Content-Type':'application/json'})
-    res.write(JSON.stringify(apiData))
-    res.end()
-}).listen(3000,)
+
+})
+
+app.get('/about',(req,res)=>{
+    res.send('we are the best ')
+})
+
+app.listen(3000)
