@@ -1,0 +1,17 @@
+{
+    "people": [
+      {
+        "name": "John Doe",
+        "email": "johndoe@example.com"
+      },
+      {
+        "name": "Jane Smith",
+        "email": "janesmith@example.com"
+      },
+      {
+        "name": "Michael Johnson",
+        "email": "michaeljohnson@example.com"
+      }
+    ]
+  }
+  
