@@ -1,11 +1,16 @@
 const express = require('express')
 const app = express()
 const path = require('path')
+const ageFilter = require('./middleware')
 
-const folderPath = path.join(__dirname,'/public')
+
+const route = express.Router()
+
+route.use(ageFilter)
+// app.use(ageFilter) // --> if we want to  use middleware on spesific rout then  instead of passing this function to app.use() we can pass the middleware function as sencond paramter in the app.get (means after the url)
 
 app.set('view engine', 'ejs')
-app.get('/',(request, response)=>{
+app.get('/', (request, response)=>{
     const user={
         name:'ganesh jadhav',
         email:'ganeshjadhav2452@gmail.com',
@@ -16,21 +21,12 @@ app.get('/',(request, response)=>{
     response.render(`profile`,{user})
 })
 
-app.get('/about',(request, response)=>{
-    response.sendFile(`${folderPath}/about.html`)
-})
-app.get('/login',(request, response)=>{
+route.get('/login',(request, response)=>{
     response.render('login')
 })
+app.use('/', route)
 
 
-app.get('/help',(request, response)=>{
-    response.sendFile(`${folderPath}/help.html`)
-})
-
-app.get('*',(request, response)=>{
-    response.sendFile(`${folderPath}/notFound.html`)
-})
 
 
 
